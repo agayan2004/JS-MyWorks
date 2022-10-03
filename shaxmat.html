@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+    <div id="block"></div>
+        <script>
+
+
+
+
+
+let parent = document.getElementById('block');
+let table = document.createElement('table')
+table.style.borderCollapse = 'collapse';
+    
+    
+for (let i  = 0; i  < 9; i ++) {
+    let  tr = document.createElement('tr')
+    parent.append(tr)
+    for (let j = 0; j < 9; j++) {
+        let td = document.createElement('td')
+        td.style.border = '1px solid'
+        td.style.width = '50px'
+        td.style.height = '50px'
+        tr.append(td)
+        if ((i + j) % 2 == 0) {
+            td.classList.add('black')
+            td.style.backgroundColor = 'black'
+        }else {
+            td.classList.add('white')
+            td.style.backgroundColor = 'white'
+        }
+    }
+}
+
+        </script>
+    </body>
+</html>

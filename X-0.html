@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-O</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        #kristiknolik {
+            text-align: center;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            padding: 79.5px 0;
+            background-image: url(images/bg3.jpg);
+            background-size: cover;
+        }
+        #kristiknolik td {
+            border: 3px solid red;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-size: 35px;
+            cursor: pointer;
+        }
+        #kristiknolik td:hover {
+            background-color: #2b2a2ad9;
+        }
+        #kristiknolik table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+        .color {
+            color: azure;
+        }
+        #user1 {
+            color: blueviolet;
+        }
+        #user2 {
+            color: blueviolet;
+        }
+        #btn {
+            margin-top: 25px;
+            border: 1px solid;
+            border-radius: 25px;
+            background-color: blanchedalmond;
+            padding: 15px;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <div id="kristiknolik">
+        <h2 id="winner" class="color">Winner?</h2>
+        <h2 id="user" class="color">Players</h2>
+        <h2 class="color">user1 <span id="user1">0</span> won  |  user2 <span id="user2">0</span> won</h2>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <button id="btn">RESTART</button>
+<script>
+    let div = document.getElementById('kristiknolik')
+    let td = document.getElementsByTagName('td')
+    let user = document.getElementById('user')
+    let winn = document.getElementById('winner')
+    let button = document.getElementById('btn')
+    let user1 = 0;
+    let user2 = 0;
+    let game = true;
+    let winner = true;
+    let arr = [
+        [0,1,2],
+        [0,4,8],
+        [2,4,6],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        ]
+
+
+    for (let i = 0; i < td.length; i++) {
+        td[i].addEventListener('click', function() {
+            if (td[i].innerHTML == '' && winner) {
+                xo(td[i])
+                win();
+            }
+        })
+    }
+
+
+    function xo(el) {
+        if (game) {
+            el.style.cursor = 'context-menu';
+            el.innerHTML = 'X'
+            game = false;
+            user.innerHTML = 'user1'
+            el.style.backgroundColor = '#84c02b'
+        }else {
+            el.style.cursor = 'context-menu';
+            el.innerHTML = 'O'
+            game = true;
+            user.innerHTML = 'user2'
+            el.style.backgroundColor = '#79d8d8'
+        }
+    }
+
+
+    function win() {
+        for(var i = 0; i < arr.length; i++){
+            if(td[arr[i][0]].innerHTML == 'X' && td[arr[i][1]].innerHTML == 'X' && td[arr[i][2]].innerHTML == 'X'){
+                ++user1;
+                winn.innerHTML = 'Winner user1'
+                document.getElementById('user1').innerHTML = user1.toString();
+                winner = false;
+            }else if(td[arr[i][0]].innerHTML == 'O' && td[arr[i][1]].innerHTML == 'O' && td[arr[i][2]].innerHTML == 'O'){
+                ++user2;
+                winn.innerHTML = 'Winner user2'
+                document.getElementById('user2').innerHTML = user2.toString();
+                winner = false
+            }
+        }
+    }
+
+    button.addEventListener('click', function() {
+        restart()
+    })
+
+    function restart() {
+        winn.innerHTML = 'Winner?';
+        winner = true;
+        user = 'Player';
+        for (let i = 0; i < td.length; i++) {
+            td[i].innerHTML = '';
+            td[i].style.backgroundColor = ''
+            td[i].style.cursor = 'pointer';
+        }
+    }
+    </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                transition: 0.5s;
+            }
+            .parent {
+                background-color: black;
+                color: white;
+                width: 300px;
+                margin: auto;
+            }
+            .parent input:focus {
+                border: none;
+                box-shadow: 1px 1px 2px 2px inset gray;
+            }
+            .parent input {
+                width: 98%;
+                height: 50px;
+                background-color: black;
+                color: white;
+                font-size: 25px;
+                text-align: right;
+                border: none;
+            }
+            .button:hover {
+                background-color: darkcyan;
+            }
+            .button {
+                width: 24%;
+                height: 100%;
+                margin-right: -4px;
+                font-size: 25px;
+                border-radius: 40%;
+                background-color: gray;
+                color: white;
+            }
+            .seconddiv {
+                padding-top: 10px;
+                height: 50px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div class="parent">
+        <div><input type="text" id="userInput" /></div>
+        <div class="seconddiv">
+            <button class="button">C</button>
+            <button class="button">%</button>
+            <button class="button">/</button>
+            <button class="button">+</button>
+        </div>
+        <div class="seconddiv">
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button">-</button>
+        </div>
+        <div class="seconddiv">
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button">*</button>
+        </div>
+        <div class="seconddiv">
+            <button class="button">3</button>
+            <button class="button">2</button>
+            <button class="button">1</button>
+            <button id="calculate" class="button">=</button>
+        </div>
+        <div class="seconddiv">
+            <button class="button">0</button>
+            <button class="button">.</button>
+            <button class="button">del</button>
+        </div>
+    </div>
+<script>
+    
+let button = document.getElementsByTagName('button')
+for (let i = 0; i < button.length; i++) {
+    button[i].addEventListener('click', function() {
+        if (button[i].innerHTML == '=') {
+            userInput.value = calculate(calculatestr(userInput.value))
+        }else if (button[i].innerHTML == 'C') {
+            userInput.value = ''
+        }else if (button[i].innerHTML == 'del') {
+            userInput.value = userInput.value.slice(userInput.value.lenght,-1)
+        }else {
+            userInput.value += button[i].innerHTML
+        }
+    })
+}
+
+
+let calculateButton = document.getElementById('calculate'),
+userInput = document.getElementById('userInput')
+
+
+function calculatestr(s) {
+    let kalkulator = [],
+        nish = ''
+    for (let i = 0, char; char = s.charAt(i); i++) {
+            if ('^*/+-'.indexOf(char) > -1) {
+                if (nish == '' && char == '-') {
+                    nish = '-';
+                } else {
+                    kalkulator.push(parseFloat(nish), char);
+                    nish = '';
+                }
+            } else {
+                nish += s.charAt(i);
+            }
+        }
+        if (nish != '') {
+            kalkulator.push(parseFloat(nish));
+        }
+        console.log(nish);
+        console.log(kalkulator);
+        return kalkulator;
+}
+
+
+function calculate(num) {
+    var nisher = [{'^': (a, b) => Math.pow(a, b)},
+            {'*': (a, b) => a * b, '/': (a, b) => a / b},
+            {'+': (a, b) => a + b, '-': (a, b) => a - b}],
+            newNum = [],
+            stugum;
+    for (var i = 0; i < nisher.length; i++) {
+        for (var j = 0; j < num.length; j++) {
+            if (nisher[i][num[j]]) {
+                stugum = nisher[i][num[j]];
+            } else if (stugum) {
+                newNum[newNum.length - 1] = stugum(newNum[newNum.length - 1], num[j]);
+                stugum = null;
+            } else {
+                newNum.push(num[j]);
+            }
+            }
+            num = newNum;
+            newNum = [];
+    }
+    if (num.length > 1) {
+        return num;
+    } else {
+        return num[0];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        fieldset {
+            width: 50%;
+            margin: auto;
+        }
+        #block form{
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 20px;
+        }
+        #block form div{
+            box-sizing: border-box;
+            padding: 20px;
+            width: 50%;
+        }
+        #button {
+            padding: 10px 20px;
+            width: 77px;
+            margin: auto;
+            background-color: antiquewhite;
+            color: crimson;
+            border: 1px solid antiquewhite;
+        }
+        span {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend><h2>input validator</h2></legend>
+        <div id="block">
+            <form></form>
+        </div>
+    </fieldset>
+<script>
+
+let arr = [
+  {
+    id: 'name',
+    name: 'f_name',
+    type: 'text',
+    pattern: '[A-Za-z]{3}',
+    placeholder: 'First Name',
+    label: 'First Name'
+  },
+  {
+    id: 'last',
+    name: 'l_name',
+    type: 'text',
+    pattern: '[A-Za-z]{3}',
+    placeholder: 'Last Name',
+    label: 'Last Name'
+  },
+  {
+    id: 'email',
+    name: 'email',
+    type: 'email',
+    pattern: "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/",
+    placeholder: 'Email',
+    label: 'Email'
+  },
+  {
+    id: 'image',
+    name: 'image',
+    type: 'file',
+    pattern: '',
+    placeholder: 'Image',
+    label: 'Image'
+  },
+  {
+    id: 'password',
+    name: 'password',
+    type: 'password',
+    pattern: "[0-9a-fA-F]{6,10}",
+    placeholder: 'your password',
+    label: 'Password'
+  },
+  {
+    id: 'phone',
+    name: 'phone',
+    type: 'tel',
+    pattern: '[7-9]{1}[0-9]{9}',
+    placeholder: 'your phone number',
+    label: 'Enter your phone number:'
+  },
+];
+ 
+let form = document.querySelector('#block form')
+let div;
+let input;
+let label;
+let button;
+button = document.createElement('button')
+button.innerHTML = 'SAVE'
+button.setAttribute('id', 'button')
+let arrinp = document.getElementsByTagName('input')
+
+
+for (let i = 0; i < arr.length; i++) {
+    elem(arr[i])
+    arrinp[i].addEventListener('keydown', function() {
+        inp(arrinp[i])
+    })
+}
+
+
+function elem(el) {
+    div = document.createElement('div')
+    form.append(div)
+    label = document.createElement('label')
+    label.innerHTML = el.label + '<br>'
+    input = document.createElement('input')
+    label.setAttribute('for', el.id)
+    input.id = el.id
+    input.name = el.name
+    input.type = el.type
+    input.pattern = el.pattern
+    input.setAttribute('placeholder', el.placeholder)
+    input.setAttribute('id', `${el.id}`)
+    div.append(label)
+    div.append(input)
+}
+
+form.append(button)
+
+class User {
+    constructor(_FirstName, _LastName, _Email, _Image, _Password, _Phone) {
+        this.FirstName = _FirstName;
+        this.LastName = _LastName;
+        this.Email = _Email;
+        this.Password = _Password;
+        this.Phone = _Phone;
+    }
+}
+
+
+let name = document.getElementById('name');
+let last = document.getElementById('last');
+let email = document.getElementById('email');
+let image = document.getElementById('image');
+let password = document.getElementById('password');
+let phone = document.getElementById('phone');
+let span = document.createElement('span')
+let p = document.createElement('p')
+
+
+
+let bool = [];
+let a = 0;
+function inp(el) {
+    let regEx = new RegExp(el.pattern);
+    if (regEx.test(el.value)) {
+        bool[a] = regEx.test(el.value)
+        a++;
+        el.after(span)
+        span.style.color = 'green'
+        span.innerHTML = 'right'
+    }else {
+        el.after(span)
+        span.style.color = 'red'
+        span.innerHTML = 'wrong'
+    }
+}
+
+
+button.addEventListener('click', function (evt) {
+    evt.preventDefault()
+    if (a == arr.length - 2) {
+        let user = new User(name.value, last.value, email.value, image.value, password.value, phone.value)
+        console.log(user);
+    }else {
+        p.innerHTML = 'fields filled in incorrectly'
+        p.style.textAlign = 'center'
+        p.style.fontSize = '20px'
+        p.style.color = 'red'
+        document.getElementById('block').after(p)
+    }
+})
+
+
+
+
+</script>
+</body>
+</html>

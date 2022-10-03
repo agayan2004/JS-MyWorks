@@ -1,0 +1,47 @@
+* {
+	transition: 0.5s;
+}
+body {
+	margin: 0;
+}
+#svetafor {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid;
+	width: 103px;
+	background-color: black;
+	margin: auto;
+	margin-top: 100px;
+	border-radius: 20px;
+}
+#svetafor div {
+	width: 100px;
+	height: 100px;
+	border: 1px solid;
+	border-radius: 50%;
+	background-color: white;
+	text-align: center;
+	font-size: 50px;
+	box-sizing: border-box;
+	padding-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

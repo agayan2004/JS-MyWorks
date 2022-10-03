@@ -1,0 +1,70 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+html {
+	scroll-behavior: smooth;
+}
+
+.menu-block {
+	display: inline-block;
+	width: 100%;
+	background-color: pink;
+	position: sticky;
+    top: 0;
+}
+.menu {
+	display: flex;
+	list-style: none;
+	margin: 25px 0;
+	padding: 0;
+}
+.menu li {
+	padding: 8px;
+}
+.block {
+	height: 700px;
+	display: inline-block;
+	width: 100%;
+}
+#home {
+	background-color: red;
+}
+#contact {
+	background-color: orange;
+}
+#about {
+	background-color: blue;
+}
+#service {
+	background-color: green;
+}
+.mobile-menu-block {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: height 1s, opacity 1s;
+	background-color: pink;
+}
+#showMenu:checked + .mobile-menu-block {
+	height: 100vh;
+	opacity: 1;
+}
+.mobile-menu {
+	display: none;
+}
+@media screen and (max-width: 768px) {
+	.mobile-menu {
+		display: block;
+	}
+	.menu {
+		display: none;
+	}
+}

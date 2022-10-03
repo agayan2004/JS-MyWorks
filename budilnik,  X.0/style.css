@@ -1,0 +1,129 @@
+* {
+	transition: 0.5s;
+}
+body {
+	margin: 0;
+	background-image: url(images/bg1.jpg);
+}
+#svetafor {
+	display: flex;
+	flex-direction: column;
+	border: 5px solid red;
+	background-color: black;
+	color: darkblue;
+	width: 103px;
+	margin: auto;
+	margin-top: 10px;
+	border-radius: 20px;
+}
+#svetafor div {
+	width: 100px;
+	height: 100px;
+	border: 1px solid;
+	border-radius: 50%;
+	background-color: white;
+	text-align: center;
+	font-size: 50px;
+	box-sizing: border-box;
+	padding-top: 20px;
+}
+input {
+	width: 30px;
+}
+#budilnik {
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	border-top: 1px solid;
+	padding-top: 80px;
+	margin-top: 30px;
+	background-image: url(images/bg2.jpg);
+	background-size: cover;
+	padding-bottom: 100px;
+}
+#budilnik button {
+	background-color: antiquewhite;
+	padding: 10px 15px;
+	color: black;
+	border-radius: 25px;
+}
+#kristiknolik {
+	text-align: center;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	padding: 100px 0 100px 0;
+	background-image: url(images/bg3.jpg);
+	background-size: cover;
+}
+#kristiknolik td {
+	border: 3px solid red;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	font-size: 35px;
+	cursor: pointer;
+}
+#kristiknolik td:hover {
+	background-color: #2b2a2ad9;
+}
+#kristiknolik table {
+	border-collapse: collapse;
+	margin: auto;
+}
+.color {
+	color: azure;
+}
+#user1 {
+	color: blueviolet;
+}
+#user2 {
+	color: blueviolet;
+}
+#btn {
+	margin-top: 25px;
+	border: 1px solid;
+	border-radius: 25px;
+	background-color: blanchedalmond;
+	padding: 15px;
+	color: crimson;
+}
+#kalkulator {
+	background-image: url(images/Numbers.png);
+	background-size: cover;
+	padding: 100px 0;
+	text-align: center;
+	color: white;
+	font-size: 30px;
+}
+#kalkulator input {
+	width: 204px;
+	height: 40px;
+	margin: 2px 0;
+}
+#kalkulator button {
+	width: 20%;
+	height: 30px;
+	font-size: 20px;
+}
+.nish {
+	margin: auto;
+	width: 204px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

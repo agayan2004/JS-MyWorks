@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+		<script></script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,400;0,500;0,900;1,300&display=swap');
+			body {
+				margin: 0;
+				margin-bottom: 100px;
+				background-color: rgb(147, 147, 147);
+			}
+			 * {
+				transition: 0.5s;
+			}
+			#sekundamer {
+				font-family: "Lora"
+			}
+			.firstDiv {
+				text-align: center;
+				border: 1px solid black;
+				margin-bottom: 100px;
+			}
+			.firstDiv:hover {
+				background-color: #bdbdbd;
+			}
+			.firstDiv  button {
+				padding: 10px 30px;
+				margin-bottom: 20px;
+				background-color: aquamarine;
+				border-radius: 15px;
+				border: 1px solid aquamarine;
+				color: darkgreen;
+			}
+			.firstDiv  button:hover {
+				background-color: bisque;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			.secondDiv table tr th{
+				width: 100px;
+				height: 100px;
+				border: 1px solid black;
+				padding: 10px;
+			}
+			.secondDiv table tr th:hover {
+				background-color: #323232;
+			}
+			.secondDiv table {
+				margin: auto;
+			}
+			.secondDiv table tr th img {
+				width: 100%;
+				height: 100%;
+			}
+			#display {
+				margin-top: -371px;
+				min-width: 100%;
+				min-height: 100%;
+				position: absolute;
+				z-index: 2;
+				text-align: center;
+				background-color: #000000c9;
+				display: none;
+			}
+			#display button {
+				width: 50px;
+				height: 50px;
+				margin-top: 20px;
+				margin-left: 90%;
+			}
+			#display button img {
+				width: 100%;
+				height: 100%;
+			}
+			#comptime {
+				background-color: #323232;
+				width: 500px;
+				margin: auto;
+				margin-top: 100px;
+				color: #fff;
+				font-family: "Roboto";
+			}
+			#time {
+				border-bottom: 1px solid #bdbdbd;
+			}
+			#timestr {
+				font-size: 60px;
+				margin: 0;
+			}
+			#yearsstr {
+				color: rgb(65 142 202);
+			}
+			#yearsstr:hover {
+				color: rgb(22, 90, 217);
+			}
+			.timediv2 {
+				padding: 15px 30px 30px 30px;
+			}
+			.timediv1 {
+				padding: 30px 30px 15px 30px;
+			}
+			.timediv2 div {
+				display: flex;
+				justify-content: space-between;
+			}
+			.timediv2 table tr td {
+				width: 58px;
+				height: 50px;
+				text-align: center;
+			}
+			.timeText {
+				margin-top: 10px;
+			}
+			td {
+				border-radius: 45%;
+			}
+			td:hover {
+				background-color: #686666;
+			}
+			#timestr:hover {
+				color: #7f7d7d;
+			}
+
+		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="firstDiv">
+		<h1 id="sekundamer" style="text-align: center;">00:00:00:00</h1>
+		<button id="start">Start</button>
+		<button id="stop">Stop</button>
+		<button id="reset">Reset</button>
+	</div>
+	<div class="secondDiv">
+		<table>
+			<tr>
+				<th><img src="images/js1.jpg"></th>
+				<th><img src="images/js2.jpg"></th>
+				<th><img src="images/js3.jpg"></th>
+				<th><img src="images/js4.png"></th>
+				<th><img src="images/js5.jpg"></th>
+			</tr>
+		</table>
+	</div>
+	<div id="display">
+		<button id="btn"><img src="images/x.png"></button>
+		<div id="dspimg"></div>
+	</div>
+	<div style="border: 1px solid black; margin-top: 50px"></div>
+	<div id="comptime">
+		<div id="time">
+			<div class="timediv1">
+				<p id="timestr"></p>
+				<p id="yearsstr"></p>
+			</div>
+		</div>
+		<div class="timediv2">
+			<table>
+				<tr>
+					<td><p id="firsttd"></p></td>
+					<td><p id="firsttd2"></p></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="secondtd">︿</td>
+					<td class="secondtd">﹀</td>
+				</tr>
+				<tr>
+					<td>Пн</td>
+					<td>Вт</td>
+					<td>Ср</td>
+					<td>Чт</td>
+					<td>Пт</td>
+					<td>Сб</td>
+					<td>Вс</td>
+				</tr>
+				<tr>
+					<td style="color: rgb(69 69 69);">29</td>
+					<td style="color: rgb(69 69 69);">30</td>
+					<td style="color: rgb(69 69 69);">31</td>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<td>10</td>
+					<td>11</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>13</td>
+					<td>14</td>
+					<td>15</td>
+					<td>16</td>
+					<td>17</td>
+					<td>18</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>20</td>
+					<td>21</td>
+					<td>22</td>
+					<td>23</td>
+					<td>24</td>
+					<td>25</td>
+				</tr>
+				<tr>
+					<td>26</td>
+					<td>27</td>
+					<td>28</td>
+					<td>29</td>
+					<td>30</td>
+					<td style="color: rgb(69 69 69);">1</td>
+					<td style="color: rgb(69 69 69);">2</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<script>
+
+// tnain 1
+{
+	let hour = 0;
+	let minut = 0;
+	let secound = 0;
+	let milisecound = 0;
+	let start = document.getElementById('start')
+	let stop = document.getElementById('stop')
+	let st = document.getElementById('sekundamer');
+	let reset = document.getElementById('reset');
+	let st2 = '';
+
+	function sekundamer() {
+		let a = setInterval(() => {
+			milisecound++;
+			if (milisecound == 10) {
+				milisecound = 0 
+				secound++
+			}else if (secound == 60) {
+				minut++
+				secound = 0;
+			}else if (minut == 60) {
+				minut = 0
+			hour++ 
+			}
+			st.innerHTML = `${hour < 10 ? '0' + hour : hour}:${minut < 10 ? '0' + minut : minut}:${secound < 10 ? '0' + secound : secound}:${milisecound < 10 ? '0' + milisecound : milisecound}`
+		}, 100);
+
+	stop.addEventListener('click', function() {
+		clearInterval(a);
+		st2 = st.innerHTML;
+	});
+
+	reset.addEventListener('click', function() {
+		hour = 0;
+		minut = 0;
+		secound = 0;
+		milisecound = 0;
+		st.innerHTML = '00:00:00:00'
+		clearInterval(a);
+	})
+	};
+		
+
+	start.addEventListener('click', function () {
+		if (st.innerHTML == '00:00:00:00') {
+				sekundamer();
+		}else if (st.innerHTML == st2) {
+				sekundamer();
+		}
+	});
+}
+
+// tnain 2
+{
+	  
+let th = document.getElementsByTagName('th')
+let div = document.getElementById('dspimg') 
+let button = document.getElementById('btn')
+let div2 = document.getElementById('display')
+
+for (let i = 0; i < th.length; i++) {
+	th[i].addEventListener('click', function() {
+		display(th[i])
+	})
+}
+
+function display(el) {
+	div.innerHTML += el.innerHTML
+	div2.style.display = 'block';
+}
+
+button.addEventListener('click', function() {
+		div2.style.display = 'none';
+		div.innerHTML = '';
+})
+}
+
+
+// tnain3
+{
+
+	month = ['Հունվար', 'Փետրվար', 'Մարտ', 'Ապրիլ', 'Մայիս', 'Հունիս', 'Հուլիս', 'Օգոստոս', 'Սեպտեմբեր', 'Հոկտեմբերի', 'Նոյեմբեր', 'Դեկտեմբեր'];
+	week = ['Կիրակի', 'Երկուշաբթի', 'Երեքշաբթի', 'Չորեքշաբթի', 'Հինգշաբթի', 'Ուրբաթ', 'Շաբաթ'];
+	let td = document.getElementsByTagName('td')	
+	
+
+	for (let i = 0; i < td.length; i++) {
+		if (td[i].innerHTML == new Date().getDate()) {
+			time(td[i])
+		}
+	}
+
+	function time(el) {
+		el.style.backgroundColor = 'rgb(65 142 202)'
+		el.style.borderRadius = '45%'
+		el.style.color = 'black'
+	}
+
+
+	setInterval(() => {
+		document.getElementById('timestr').innerHTML = new Date().toLocaleTimeString();
+		document.getElementById('yearsstr').innerHTML = `${week[new Date().getDay()]}, ${month[new Date().getMonth()]} ${new Date().getDate()}, ${new Date().getFullYear()}`
+		document.getElementById('firsttd').innerHTML = `${month[new Date().getMonth()]}`
+		document.getElementById('firsttd2').innerHTML = `${new Date().getFullYear()}`
+	}, 100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+	
+
+</script>
+</body>
+</html>

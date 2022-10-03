@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+<style>
+.block {
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 50%;
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+}
+.gallery div {
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	margin: 10px;
+}
+.gallery div img {
+	object-fit: contain;
+	width: 100%;
+}
+.zoom-image {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgb(0, 0, 0, 0.7);
+	text-align: center;
+	padding: 100px 0;
+	display: none;
+}
+.zoom-image span {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	font-size: 35px;
+	color: white;
+}
+.zoom-image img {
+	transform: scale(1);
+	transition: transform 0.5s;
+	max-width: 95%;
+}
+
+        </style>
+	</head>
+	<body>
+			<div class="gallery" id="block">
+
+			</div>
+
+			<div class="zoom-image" id="zoom">
+				<span class="close">X</span>
+				<img src="" alt="image">
+			</div>
+			<img src="" alt="">
+			<img src="" alt="">
+			<img src="" alt="">
+
+			<a href=""></a>
+			<a href=""></a>
+			<a href=""></a>
+<script>
+
+let images = ['./images/image.jfif', './images/img.jpg', './images/gold.jpg'];
+
+
+let block = document.getElementById('block');
+
+for (let i = 0; i < images.length; i++) {
+  let div = document.createElement('div');
+  let img = document.createElement('img');
+  img.src = images[i];
+  showImage(img);
+  div.append(img);
+  block.append(div)
+}
+
+document.querySelector('#zoom > span.close').addEventListener('click', function() {
+  document.getElementById('zoom').style.display = 'none';
+})
+
+function showImage (img) {
+  img.addEventListener('click', function () {
+    document.getElementById('zoom').style.display = 'block';
+    document.querySelector('#zoom > img').src = img.src;
+  })
+}
+            </script>
+	</body>
+</html>

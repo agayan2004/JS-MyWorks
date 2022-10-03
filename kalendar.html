@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+		<script></script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,400;0,500;0,900;1,300&display=swap');
+			body {
+				margin: 0;
+				margin-bottom: 100px;
+			}
+			 * {
+				transition: 0.5s;
+			}
+			.back button{
+				border: none;
+				color: white;
+				padding: 10px;
+				font-size: 20px;
+				background-color: #323232;
+				border: 1px solid #323232;
+			}
+			.back button:hover {
+				background-color: #323232;
+				border-radius: 0;
+				border: 1px solid rgb(124, 120, 120);
+			}
+			.next button{
+				border: none;
+				color: white;
+				padding: 10px;
+				font-size: 20px;
+				background-color: #323232;
+				border: 1px solid #323232;
+			}
+			.next button:hover {
+				background-color: #323232;
+				border-radius: 0;
+				border: 1px solid rgb(124, 120, 120);
+			}
+			#comptime {
+				background-color: #323232;
+				width: 500px;
+				margin: auto;
+				margin-top: 100px;
+				color: #fff;
+				font-family: "Roboto";
+			}
+			#time {
+				border-bottom: 1px solid #bdbdbd;
+			}
+			#timestr {
+				font-size: 60px;
+				margin: 0;
+			}
+			#yearsstr {
+				color: rgb(65 142 202);
+			}
+			#yearsstr:hover {
+				color: rgb(22, 90, 217);
+			}
+			.timediv2 {
+				padding: 15px 30px 30px 30px;
+			}
+			.timediv1 {
+				padding: 30px 30px 15px 30px;
+			}
+			.timediv2 div {
+				display: flex;
+				justify-content: space-between;
+			}
+			.timediv2 table tr td {
+				width: 58px;
+				height: 50px;
+				text-align: center;
+			}
+			.timeText {
+				margin-top: 10px;
+			}
+			td {
+				border-radius: 45%;
+			}
+			#table td:hover {
+				background-color: #686666;
+			}
+			#timestr:hover {
+				color: #7f7d7d;
+			}
+			table {
+				empty-cells: hide;
+			}
+			#calendarDays {
+				display: flex;
+				text-align: center;
+				flex-wrap: wrap;
+			}
+			#calendarDays div {
+				width: 60px;
+				height: 60px;
+				text-align: center;
+				padding: 23px;
+				border-radius: 30%;
+				box-sizing: border-box;
+				margin: auto;
+			}
+			#calendarDays div:hover{
+				background-color: #686666;
+			}
+		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id="comptime">
+		<div id="time">
+			<div class="timediv1">
+				<p id="timestr"></p>
+				<p id="yearsstr"></p>
+			</div>
+		</div>
+		<div class="timediv2">
+			<table>
+				<tr>
+					<td><p id="firsttd"></p></td>
+					<td><p id="firsttd2"></p></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="back"><button>︿</button></td>
+					<td class="next"><button>﹀</button></td>
+				</tr>
+			</table>
+			<table>
+				<tr id="shabat">
+					<td>Երկու</td>
+					<td>Երեք</td>
+					<td>Չորեք</td>
+					<td>Հինգ</td>
+					<td>Ուրբ</td>
+					<td>Շաբ</td>
+					<td>Կիր</td>
+				</tr>
+				<tr>
+			</table>
+			<table id="table">
+			<div id="calendarDays" class="days"></div>
+		</div>
+	</div>
+<script>
+
+let month = ['Հունվար', 'Փետրվար', 'Մարտ', 'Ապրիլ', 'Մայիս', 'Հունիս', 'Հուլիս', 'Օգոստոս', 'Սեպտեմբեր', 'Հոկտեմբերի', 'Նոյեմբեր','Դեկտեմբեր'];
+let week = ['Կիրակի', 'Երկուշաբթի', 'Երեքշաբթի', 'Չորեքշաբթի', 'Հինգշաբթի', 'Ուրբաթ', 'Շաբաթ'];
+let year = document.getElementById('yearsstr')
+let amis = document.getElementById('firsttd')
+let fullYear = document.getElementById('firsttd2')
+let a = new Date().getMonth();
+fullYear.innerHTML = `${new Date().getFullYear()}`
+document.getElementById('timestr').innerHTML = new Date().toLocaleTimeString();
+amis.innerHTML =  `${month[a]}`;
+year.innerHTML = `${week[new Date().getDay()]}, ${month[new Date().getMonth() + 1]} ${new Date().getDate()}, ${new Date().getFullYear()}`;
+let cleardiv = document.getElementById('calendarDays')	
+let next = document.querySelector('.next button')
+let back = document.querySelector('.back button')
+let div;
+let masiv = []
+
+
+function getDaysInMonth (month,year) {
+ 	let days = new Date(year, month+1, 0).getDate();
+	let day1 = new Date(year, month, 1).getDay()
+	console.log(day1,days);
+	let g = 1;
+
+	for (let i = 0; i < arr.length; i++) {
+		arr[i].innerHTML = ''
+	}
+	if (day1 !== 0) {
+		for (let i = day1-1; i < days+day1-1; i++) {
+		arr[i].innerHTML = g
+		++g
+		}
+	}else{
+		for (let i = day1; i < days+day1; i++) {
+		arr[i].innerHTML = g
+		++g
+	}
+	}
+};
+
+
+for (let i = 0; i <= 41; i++) {
+	div = document.createElement('div')
+	cleardiv.prepend(div)
+}
+let arr = document.querySelectorAll('#calendarDays div')
+getDaysInMonth(a,+fullYear.innerHTML)
+
+
+setInterval(() => {
+	document.getElementById('timestr').innerHTML = new Date().toLocaleTimeString();
+	amis.innerHTML =  `${month[a]}`
+	year.innerHTML = `${week[new Date().getDay()]}, ${month[new Date().getMonth() + 1]} ${new Date().getDate()}, ${new Date().getFullYear()}`
+}, 1000);
+
+
+
+next.addEventListener('click', function () {
+	--a;
+	if (a == -1) {
+		a = 11
+		fullYear.innerHTML = +fullYear.innerHTML - 1
+	}
+	getDaysInMonth(a,+fullYear.innerHTML)
+	amis.innerHTML = month[a]
+})
+back.addEventListener('click', function () {
+	++a
+	if (a == 12) {
+		a = 0;
+		fullYear.innerHTML = +fullYear.innerHTML + 1
+	}
+	amis.innerHTML = month[a]
+	getDaysInMonth(a,+fullYear.innerHTML)
+})
+
+
+
+
+
+
+
+	
+
+</script>
+</body>
+</html>
